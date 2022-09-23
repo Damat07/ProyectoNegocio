@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negocio | Maquinas</title>
+</head>
+<body>
+    <header>
+        Tu negocio posee las siguientes maquinas que haran de tu producto de la mejor calidad
+        <br>
+        <br>
+        {% for maquina in lista_maquinas %}
+        La {{maquina.marca}} {{maquina.modelo}}, {{maquina.descripcion}} y se fabrico en el año {{maquina.año}}
+        <br>
+        <br>
+        {% endfor %}
+    </header>
+    <main>
+        {% block contenido %}
+            <p>Si quieres puedes agregar mas maquinas a tu negocio en este formulario</p>
+            <div>
+                <form action="" method="POST"> {% csrf_token %}
+                    <input type="text" name="marca" placeholder="Marca">
+                    <input type="text" name="modelo" placeholder="Modelo">
+                    <input type="number" name="año" placeholder="Año">
+                    <input type="text" name="descripcion" placeholder="Descripcion">
+                    <button type="submit">Agregar maquina</button>
+                </form>
+            </div>
+        {% endblock %}
+    </main>
+</body>
+</html>
