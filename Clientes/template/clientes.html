@@ -1,49 +1,54 @@
 <!DOCTYPE html>
+{% extends 'home.html' %}
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/estiloClientes.css'%}"
     <title>Negocio | Clientes</title>
 </head>
 <body>
-    <header>
-        <p>Queremos saber tu opinion!</p>
+    <main>
+        {% block contenido %}
         <div>
+            <p>Queremos saber tu opinion!</p>
             <form action="" method="POST"> {% csrf_token %}
                 <input type="text" name="nombre" placeholder="nombre">
                 <input type="text" name="comentario" placeholder="Cuentanos cuan conforme estas">
                 <button type="submit">Enviar comentario</button>
             </form>
         </div>
-    </header>
-    <main>
-        <h2>Reseñas de nuestros clientes</h2>
         <div>
-            {% for comentario in comentarios%}
-                <h5>{{comentario.nombre}}:</h5>
-                <br>
-                {{comentario.comentario}}
-                <br>
-                <br>
-            {% endfor %}
-        </div>
-        <div>
-            <h2>Buscar comentario por nombre</h2>
-            <form action="buscar_comentarios" method="GET"> 
-                <input type="text" name="nombre" placeholder="Nombre">
-                <button type="submit">Buscar comentario</button>
-            </form>
-        </div>
-        <div>
-            {% if lista_comentarios %}
-            <ul>
-                {% for comentario in lista_comentarios %}
-                <li>{{comentario.nombre}}</li>
-                <li>{{comentario.comentario}}</li>
+            <div>
+            <h2>Reseñas de nuestros clientes</h2>
+                {% for comentario in comentarios%}
+                    <h5>{{comentario.nombre}}:</h5>
+                    <br>
+                    {{comentario.comentario}}
+                    <br>
+                    <br>
                 {% endfor %}
-            </ul>
-            {% endif %}
+            </div>
+            <div>
+                <h2>Buscar comentario por nombre</h2>
+                <form action="buscar_comentarios" method="GET"> 
+                    <input type="text" name="nombre" placeholder="Nombre">
+                    <button type="submit">Buscar comentario</button>
+                </form>
+            </div>
+            <div>
+                {% if lista_comentarios %}
+                <ul>
+                    {% for comentario in lista_comentarios %}
+                    <li>{{comentario.nombre}}</li>
+                    <li>{{comentario.comentario}}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        {% endblock %}
         </div>
     </main>
 </body>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
   <title>Home</title>
 </head>
 <body>
@@ -30,14 +32,18 @@
       </nav>
     </header>
     <main>
-      Bienvenido a TU! negocio, en el que podras sencillamente crear tu equipo de trabajo
-      <br>
-      Agregar las maquinas para tu produccion
-      <br>
-      y habra una seccion de clientes en donde ellos dejaran reseñas sobre tus productos y tu atencion
-      <br>
-      <br>
-      Deberas elegir la opcion que elijas en las barra de arriba
+      <div>
+        {% block contenido %}
+        Bienvenido a TU! negocio, en el que podras sencillamente crear tu equipo de trabajo
+        <br>
+        Agregar las maquinas para tu produccion
+        <br>
+        y habra una seccion de clientes en donde ellos dejaran reseñas sobre tus productos y tu atencion
+        <br>
+        <br>
+        Deberas elegir la opcion que elijas en las barra de arriba
+        {% endblock %}
+      </div>
     </main>
 </body>
 </html>
